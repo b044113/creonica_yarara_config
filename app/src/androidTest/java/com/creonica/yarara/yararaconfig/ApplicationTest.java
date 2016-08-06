@@ -1,4 +1,4 @@
-package com.creonica.yarara.yararaconfigurationtool;
+package com.creonica.yarara.yararaconfig;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

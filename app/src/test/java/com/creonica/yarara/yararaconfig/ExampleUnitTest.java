@@ -1,4 +1,4 @@
-package com.creonica.yarara.yararaconfigurationtool;
+package com.creonica.yarara.yararaconfig;
 
 import org.junit.Test;
 

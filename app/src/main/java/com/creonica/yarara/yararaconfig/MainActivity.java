@@ -1,4 +1,4 @@
-package com.creonica.yarara.yararaconfigurationtool;
+package com.creonica.yarara.yararaconfig;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
