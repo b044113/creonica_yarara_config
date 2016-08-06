@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "7500284390",
+    "firebase_url": "https://yarara-config-tool.firebaseio.com",
+    "project_id": "yarara-config-tool",
+    "storage_bucket": "yarara-config-tool.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:7500284390:android:ea0d7175b619e64b",
+        "android_client_info": {
+          "package_name": "com.creonica.yarara.yararaconfig"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "7500284390-oarvm44hsamt4rbiq6oeh1fkshvacmor.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjvUFv4OVdclDcKrC3c8TdIfhybCTMr3o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
