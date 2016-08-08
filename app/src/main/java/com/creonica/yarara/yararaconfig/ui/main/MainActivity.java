@@ -8,6 +8,8 @@ import com.creonica.yarara.yararaconfig.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    public enum FragmentToLaunch {VIEW, EDIT, CREATE};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
