@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.creonica.yarara.yararaconfig.MainActivity;
+import com.creonica.yarara.yararaconfig.ui.main.MainActivity;
 import com.creonica.yarara.yararaconfig.R;
 import com.creonica.yarara.yararaconfig.utils.Constants;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -149,7 +149,7 @@ public class LoginActivity extends Activity {
         mAuthProgressDialog.setCancelable(false);
     }
 
-    public void signInPassword() {
+    private void signInPassword() {
         String email = mEditTextEmail.getText().toString();
         String password = mEditTextPassword.getText().toString();
 
@@ -185,8 +185,12 @@ public class LoginActivity extends Activity {
                             //mSharedPrefEditor.putString(Constants.KEY_ENCODED_EMAIL, mEncodedEmail).apply();
 
                             /* Go to main activity */
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            intent.putExtra("com.creonica.yarara.uid", user.getUid());
+
                             startActivity(intent);
                             finish();
                         }
