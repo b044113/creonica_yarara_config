@@ -37,7 +37,7 @@ public final class Constants {
     /**
      * Constants for Firebase URL
      */
-    public static final String FIREBASE_URL = "https://shoppinglist-plus-8e033.firebaseio.com/";
+    public static final String FIREBASE_URL = "https://yarara-config-tool.firebaseio.com";
     public static final String FIREBASE_URL_SHOPPING_LIST_ITEMS = FIREBASE_URL + "/" + FIREBASE_LOCATION_SHOPPING_LIST_ITEMS;
     public static final String FIREBASE_URL_USERS = FIREBASE_URL + "/" + FIREBASE_LOCATION_USERS;
     public static final String FIREBASE_URL_USER_LISTS = FIREBASE_URL + "/" + FIREBASE_LOCATION_USER_LISTS;

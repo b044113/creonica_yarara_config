@@ -7,7 +7,7 @@ import java.util.HashMap;
  */
 public class Alarm {
 
-    private int mID;
+    private Integer mID;
     private String mDescription;
     private HashMap<String, String> mSensors;
     private HashMap<String, User> mUsers;
@@ -23,7 +23,7 @@ public class Alarm {
         return mID;
     }
 
-    public void setID(int id) {
+    public void setID(Integer id) {
         this.mID = id;
     }
 

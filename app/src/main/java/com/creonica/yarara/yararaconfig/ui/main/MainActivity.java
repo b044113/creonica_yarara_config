@@ -8,6 +8,11 @@ import com.creonica.yarara.yararaconfig.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String ALARM_ID_EXTRA = "com.creonica.yarara.yararaconfig.model.Alarm.ID";
+    public static final String ALARM_DESC_EXTRA = "com.creonica.yarara.yararaconfig.model.Alarm.Description";
+    public static final String ALARM_FRAGMENT_TO_LOAD_EXTRA = "com.creonica.yarara.yararaconfig.Fragment_To_Load";
+
+
     public enum FragmentToLaunch {VIEW, EDIT, CREATE};
 
     @Override

@@ -7,6 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/dark_blue"
     tools:context=".ui.main.MainActivity">
 
     <TextView
@@ -14,4 +15,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/mainActivityLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="notebook.notebook.MainActivity"
+        tools:showIn="@layout/activity_main">
+
+        <fragment
+            android:id="@+id/mainActivityFrag"
+            android:name="com.creonica.yarara.yararaconfig.ui.main.AlarmListFragment"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 </RelativeLayout>

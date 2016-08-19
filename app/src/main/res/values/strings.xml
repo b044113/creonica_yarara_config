@@ -41,4 +41,7 @@
     <string name="error_email_taken">The email is already taken.</string>
     <string name="error_invalid_password_not_valid">Please enter a password that is at least 6 characters long.</string>
     <string name="error_cannot_be_empty">This cannot be empty.</string>
+
+
+    <string name="viewFragmentTitle">Detalle Alarma Fragment</string>
 </resources>
