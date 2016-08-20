@@ -9,13 +9,13 @@ public class Alarm {
 
     private Integer mID;
     private String mDescription;
-    private HashMap<String, String> mSensors;
+    private HashMap<String, Sensor> mSensors;
     private HashMap<String, User> mUsers;
 
     public Alarm(int mID, String mDescription) {
         this.mID = mID;
         this.mDescription = mDescription;
-        mSensors = new HashMap<String, String>();
+        mSensors = new HashMap<String, Sensor>();
         mUsers = new HashMap<String, User>();
     }
 
@@ -35,7 +35,7 @@ public class Alarm {
         this.mDescription = description;
     }
 
-    public HashMap<String, String>getSensors() {
+    public HashMap<String, Sensor>getSensors() {
         return this.mSensors;
     }
 
