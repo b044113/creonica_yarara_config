@@ -4,7 +4,7 @@
     android:id="@+id/rl_fragment_shopping_lists"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_blue"
+    android:background="@color/light_blue_50"
     tools:context="com.creonica.yarara.yararaconfig.ui.main.MainActivity">
 
     <LinearLayout

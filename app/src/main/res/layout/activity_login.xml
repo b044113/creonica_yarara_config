@@ -50,7 +50,7 @@
              android:layout_width="match_parent"
             android:layout_height="@dimen/input_field_height"
             android:layout_marginBottom="@dimen/lv_header_text_size"
-            android:background="@color/dark_blue"
+            android:background="@color/dark_blue_700"
             android:onClick="onSignInPressed"
             android:text="@string/button_signin_with_password"
             android:textColor="@android:color/white" />

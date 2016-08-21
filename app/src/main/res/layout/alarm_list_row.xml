@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            style="@style/ListItemText"
             android:text="0000"
             android:id="@+id/listItemAlarmID"
             android:layout_alignParentTop="true"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:text="Descripción"
             android:id="@+id/listItemAlarmDesc"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            style="@style/ListItemText"
             android:layout_below="@+id/listItemAlarmID"
             android:layout_alignParentRight="true"
             android:ellipsize="end"
@@ -40,7 +40,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingRight="20dp"
+        android:paddingRight="5dp"
         android:paddingTop="0dp"
         android:paddingBottom="0dp"
         android:gravity="right"
@@ -52,9 +52,9 @@
             android:gravity="right">
 
             <ImageView
-                android:src="@drawable/icon_sensor"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:src="@drawable/ic_notifications_off_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:adjustViewBounds="true"
@@ -62,10 +62,11 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
                 android:text="0"
                 android:id="@+id/listItemSensorCount"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                style="@style/ListItemText"
                 />
         </LinearLayout>
 
@@ -86,10 +87,11 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
                 android:text="0"
                 android:id="@+id/listItemUsersCount"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                style="@style/ListItemText"
                 />
         </LinearLayout>
 
