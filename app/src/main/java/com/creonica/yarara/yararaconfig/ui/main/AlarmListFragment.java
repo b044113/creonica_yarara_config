@@ -2,22 +2,15 @@ package com.creonica.yarara.yararaconfig.ui.main;
 
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
-import android.view.ContextMenu;
-import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.creonica.yarara.yararaconfig.R;
 import com.creonica.yarara.yararaconfig.model.Alarm;
+import com.creonica.yarara.yararaconfig.model.Sensor;
+import com.creonica.yarara.yararaconfig.model.User;
 
 import java.util.ArrayList;
 
@@ -133,6 +126,21 @@ public class AlarmListFragment extends ListFragment {
         alarms.add(new Alarm(1001, "Alarma 2"));
         alarms.add(new Alarm(1002, "Alarma 3"));
         alarms.add(new Alarm(1003, "Alarma 4"));
+
+        alarms.get(0).getSensors().put("10000001", new Sensor(10000001, "Cocina", Sensor.SensorStatus.ENABLED));
+        alarms.get(0).getSensors().put("10000002", new Sensor(10000002, "Habitación Ppal.", Sensor.SensorStatus.DISABLED));
+        alarms.get(0).getSensors().put("10000003", new Sensor(10000003, "Habitación Chicos", Sensor.SensorStatus.DISABLED));
+        alarms.get(0).getUsers().put("10000001", new User(10000001, "Pepe", "15654866", true));
+        alarms.get(0).getUsers().put("10000002", new User(10000002, "Juana", "156543675", false));
+
+        alarms.get(1).getSensors().put("10010001", new Sensor(10001001, "Cocina", Sensor.SensorStatus.ENABLED));
+        alarms.get(1).getSensors().put("10010002", new Sensor(10001002, "Habitación", Sensor.SensorStatus.ENABLED));
+        alarms.get(1).getUsers().put("10000001", new User(10010001, "Raul", "15654866", true));
+
+        alarms.get(2).getSensors().put("10020001", new Sensor(10020001, "Jardín", Sensor.SensorStatus.ENABLED));
+        alarms.get(2).getSensors().put("10020002", new Sensor(10020002, "Comedor", Sensor.SensorStatus.DISABLED));
+        alarms.get(2).getUsers().put("10000001", new User(10020001, "Cacho", "15654866", true));
+
 
         return alarms;
     }

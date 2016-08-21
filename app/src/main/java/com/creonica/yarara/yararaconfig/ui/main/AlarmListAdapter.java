@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.creonica.yarara.yararaconfig.R;
@@ -25,6 +26,9 @@ public class AlarmListAdapter extends ArrayAdapter<Alarm> {
     public static class ViewHolder {
         TextView alarmID;
         TextView alarmDesc;
+        TextView sensorCount;
+        TextView userCount;
+        ImageView alarmEnabled;
     }
 
     @Override
@@ -42,6 +46,9 @@ public class AlarmListAdapter extends ArrayAdapter<Alarm> {
 
             viewHolder.alarmID = (TextView) convertView.findViewById(R.id.listItemAlarmID);
             viewHolder.alarmDesc = (TextView) convertView.findViewById(R.id.listItemAlarmDesc);
+            viewHolder.sensorCount = (TextView) convertView.findViewById(R.id.listItemSensorCount);
+            viewHolder.userCount = (TextView) convertView.findViewById(R.id.listItemUsersCount);
+            viewHolder.alarmEnabled = (ImageView) convertView.findViewById(R.id.listItemEnabled_image);
 
             //Para que recuerda el holder de las referencias
             convertView.setTag(viewHolder);
@@ -51,6 +58,8 @@ public class AlarmListAdapter extends ArrayAdapter<Alarm> {
 
         viewHolder.alarmID.setText(Integer.toString(alarm.getID()));
         viewHolder.alarmDesc.setText(alarm.getDescription());
+        viewHolder.sensorCount.setText(String.valueOf(alarm.getSensors().size()));
+        viewHolder.userCount.setText(String.valueOf(alarm.getUsers().size()));
 
         return convertView;
     }
