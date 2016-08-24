@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.creonica.yarara.yararaconfig.R;
@@ -16,6 +17,7 @@ import com.creonica.yarara.yararaconfig.R;
  */
 public class AlarmDetailViewFragment extends Fragment {
 
+    TabHost mTbH;
 
     public AlarmDetailViewFragment() {
         // Required empty public constructor
@@ -35,6 +37,21 @@ public class AlarmDetailViewFragment extends Fragment {
         Intent intent = getActivity().getIntent();
         alarmID.setText(intent.getExtras().getString(MainActivity.ALARM_ID_EXTRA));
         alarmDesc.setText(intent.getExtras().getString(MainActivity.ALARM_DESC_EXTRA));
+
+        mTbH = (TabHost) fragmentLayout.findViewById(R.id.alarmDetailtabHost); //llamamos al Tabhost
+        mTbH.setup();                                                         //lo activamos
+
+        TabHost.TabSpec tab1 = mTbH.newTabSpec("tab1");  //aspectos de cada Tab (pestaña)
+        TabHost.TabSpec tab2 = mTbH.newTabSpec("tab2");
+
+        tab1.setIndicator("Sensores");    //qué queremos que aparezca en las pestañas
+        tab1.setContent(R.id.linearLayoutSensor); //definimos el id de cada Tab (pestaña)
+
+        tab2.setIndicator("Usuarios");
+        tab2.setContent(R.id.linearLayoutUser);
+
+        mTbH.addTab(tab1); //añadimos los tabs ya programados
+        mTbH.addTab(tab2);
 
         return fragmentLayout;
     }

@@ -22,7 +22,7 @@ public class Sensor {
         mStatus = status;
     }
 
-    public Integer getmID() {
+    public Integer getID() {
         return mID;
     }
 
