@@ -9,12 +9,23 @@ public class Alarm {
 
     private Integer mID;
     private String mDescription;
+    private String mPhoneNumber;
     private HashMap<String, Sensor> mSensors;
+
+    public String getPhoneNumber() {
+        return mPhoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        mPhoneNumber = phoneNumber;
+    }
+
     private HashMap<String, User> mUsers;
 
-    public Alarm(int mID, String mDescription) {
-        this.mID = mID;
-        this.mDescription = mDescription;
+    public Alarm(int id, String description, String phoneNumber) {
+        mID = id;
+        mDescription = description;
+        mPhoneNumber = phoneNumber;
         mSensors = new HashMap<String, Sensor>();
         mUsers = new HashMap<String, User>();
     }
@@ -24,7 +35,7 @@ public class Alarm {
     }
 
     public void setID(Integer id) {
-        this.mID = id;
+        mID = id;
     }
 
     public String getDescription() {
@@ -32,7 +43,7 @@ public class Alarm {
     }
 
     public void setDescription(String description) {
-        this.mDescription = description;
+        mDescription = description;
     }
 
     public HashMap<String, Sensor>getSensors() {

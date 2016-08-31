@@ -108,6 +108,7 @@ public class AlarmListFragment extends ListFragment {
 
         intent.putExtra(MainActivity.ALARM_ID_EXTRA, Integer.toString(alarm.getID()));
         intent.putExtra(MainActivity.ALARM_DESC_EXTRA, alarm.getDescription());
+        intent.putExtra(MainActivity.ALARM_PHONE_EXTRA, alarm.getPhoneNumber());
 
         switch (ftl) {
             case VIEW:

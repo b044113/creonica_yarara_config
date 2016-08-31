@@ -32,11 +32,13 @@ public class AlarmDetailViewFragment extends Fragment {
 
         TextView alarmID = (TextView) fragmentLayout.findViewById(R.id.alarmID_textView);
         TextView alarmDesc = (TextView) fragmentLayout.findViewById(R.id.alarmDesc_textView);
+        TextView alarmPhone = (TextView) fragmentLayout.findViewById(R.id.alarmPhone_textView);
 
         //LLenar los campos con la información de la alarma seleccionada
         Intent intent = getActivity().getIntent();
         alarmID.setText(intent.getExtras().getString(MainActivity.ALARM_ID_EXTRA));
         alarmDesc.setText(intent.getExtras().getString(MainActivity.ALARM_DESC_EXTRA));
+        alarmPhone.setText(intent.getExtras().getString(MainActivity.ALARM_PHONE_EXTRA));
 
         mTbH = (TabHost) fragmentLayout.findViewById(R.id.alarmDetailtabHost); //llamamos al Tabhost
         mTbH.setup();                                                         //lo activamos

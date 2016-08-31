@@ -55,6 +55,19 @@
             />
     </FrameLayout>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="28dp"
+            android:text="Phone Number"
+            android:id="@+id/alarmPhone_textView"
+            />
+    </FrameLayout>
+
     <TabHost
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

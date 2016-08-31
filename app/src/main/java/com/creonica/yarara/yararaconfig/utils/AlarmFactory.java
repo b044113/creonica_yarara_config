@@ -47,10 +47,10 @@ public class AlarmFactory {
     private ArrayList<Alarm>getAllAlarms() {
         ArrayList<Alarm> alarms = new ArrayList<Alarm>();
 
-        alarms.add(new Alarm(1000, "Alarma 1"));
-        alarms.add(new Alarm(1001, "Alarma 2"));
-        alarms.add(new Alarm(1002, "Alarma 3"));
-        alarms.add(new Alarm(1003, "Alarma 4"));
+        alarms.add(new Alarm(1000, "Alarma 1", "5491134548654"));
+        alarms.add(new Alarm(1001, "Alarma 2", "5491154124874"));
+        alarms.add(new Alarm(1002, "Alarma 3", "5491132142876"));
+        alarms.add(new Alarm(1003, "Alarma 4", "5491139081758"));
 
         alarms.get(0).getSensors().put("10000001", new Sensor(10000001, "Cocina", Sensor.SensorStatus.ENABLED));
         alarms.get(0).getSensors().put("10000002", new Sensor(10000002, "Habitación Ppal.", Sensor.SensorStatus.DISABLED));
