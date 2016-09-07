@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:text="ID: "
             android:textColor="@color/black"
-            android:textSize="28dp"
+            android:textSize="14dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_marginRight="15dp" />
@@ -32,8 +32,8 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Alarm ID"
-            android:id="@+id/alarmID_textView"
+            android:text="0000"
+            android:id="@+id/alarmID_editText"
             android:textColor="@color/black"
             android:textSize="28dp"
             android:layout_alignParentTop="true"
@@ -42,19 +42,68 @@
 
     </LinearLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/alarmDescLinearLayout"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Descripción: "
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="15dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descripción"
+            android:id="@+id/alarmDesc_editText"
             android:textColor="@color/black"
             android:textSize="28dp"
-            android:text="Description"
-            android:id="@+id/alarmDesc_textView"
-            />
-    </FrameLayout>
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="15dp" />
 
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/alarmPhoneLinearLayout"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Teléfono: "
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="15dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1599999999"
+            android:id="@+id/alarmPhone_editText"
+            android:textColor="@color/black"
+            android:textSize="28dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="15dp" />
+
+    </LinearLayout>
 
 </LinearLayout>

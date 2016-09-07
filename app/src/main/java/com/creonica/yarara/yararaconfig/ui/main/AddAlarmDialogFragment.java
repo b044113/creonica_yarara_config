@@ -4,6 +4,7 @@ package com.creonica.yarara.yararaconfig.ui.main;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -13,13 +14,18 @@ import android.view.WindowManager;
 import android.widget.EditText;
 
 import com.creonica.yarara.yararaconfig.R;
+import com.creonica.yarara.yararaconfig.model.Alarm;
+import com.creonica.yarara.yararaconfig.utils.AlarmFactory;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AddAlarmDialogFragment extends Fragment {
+public class AddAlarmDialogFragment extends DialogFragment{
     //String mEncodedEmail;
-    EditText mEditTextListName;
+    //EditText mEditTextListName;
+    EditText mEditTextAlarmId;
+    EditText mEditTextAlarmDesc;
+    EditText mEditTextAlarmPhone;
 
     /**
      * Public static constructor that creates fragment and
@@ -56,23 +62,29 @@ public class AddAlarmDialogFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        getDialog().setTitle(R.string.ADD_ALARM_DIALOG_TITLE);
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_add_alarm_dialog, container, false);
+
     }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        // Get the layout inflater
+
+        // Obtener el inflater de layout y pasarle la referencia al layout del fragmento
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View rootView = inflater.inflate(R.layout.fragment_add_alarm_dialog, null);
-        //mEditTextListName = (EditText) rootView.findViewById(R.id.edit_text_list_name);
+
+        mEditTextAlarmId = (EditText) rootView.findViewById(R.id.alarmID_editText);
+        mEditTextAlarmDesc = (EditText) rootView.findViewById(R.id.alarmDesc_editText);
+        mEditTextAlarmPhone = (EditText) rootView.findViewById(R.id.alarmPhone_editText);
 
         /**
          * Call addShoppingList() when user taps "Done" keyboard action
          */
-        mEditTextListName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        /*mEditTextListName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
                 if (actionId == EditorInfo.IME_ACTION_DONE || keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
@@ -81,15 +93,22 @@ public class AddAlarmDialogFragment extends Fragment {
                 return true;
             }
         });
-
+*/
         /* Inflate and set the layout for the dialog */
-        /* Pass null as the parent view because its going in the dialog layout*/
+        /* Se definen las acciones de los botones de guardar y cancelar */
         builder.setView(rootView)
+                .setTitle(R.string.ADD_ALARM_DIALOG_TITLE)
                 /* Add action buttons */
-                .setPositiveButton(R.string.positive_button_create, new DialogInterface.OnClickListener() {
+                .setPositiveButton("Agregar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        addShoppingList();
+                        addAlarm();
+                    }
+                })
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        AddAlarmDialogFragment.this.getDialog().cancel();
                     }
                 });
 
@@ -99,60 +118,20 @@ public class AddAlarmDialogFragment extends Fragment {
     /**
      * Add new active list
      */
-    public void addShoppingList() {
-        String userEnteredName = mEditTextListName.getText().toString();
+    public void addAlarm() {
+        String alarmId = mEditTextAlarmId.getText().toString();
+        String alarmDesc = mEditTextAlarmDesc.getText().toString();
+        String alarmPhone = mEditTextAlarmPhone.getText().toString();
 
         /**
          * If EditText input is not empty
+         *
          */
-        if (!userEnteredName.equals("")) {
+        if (!alarmId.equals("") && !alarmPhone.equals("")) {
+            //Esto hay que cambiarlo una vez que se implemente la BD
+            AlarmFactory.getAlarmFactory(getContext())
+                    .getAlarms().add(new Alarm(Integer.parseInt(alarmId) , alarmDesc, alarmPhone));
 
-            /**
-             * Create Firebase references
-             */
-            //Firebase userListsRef = new Firebase(Constants.FIREBASE_URL_USER_LISTS).
-            //child(mEncodedEmail);
-            //final Firebase firebaseRef = new Firebase(Constants.FIREBASE_URL);
-
-            //Firebase newListRef = userListsRef.push();
-
-            /* Save listsRef.push() to maintain same random Id */
-            //final String listId = newListRef.getKey();
-
-            /* HashMap for data to update */
-            //HashMap<String, Object> updateShoppingListData = new HashMap<>();
-
-            /**
-             * Set raw version of date to the ServerValue.TIMESTAMP value and save into
-             * timestampCreatedMap
-             */
-            //HashMap<String, Object> timestampCreated = new HashMap<>();
-            //timestampCreated.put(Constants.FIREBASE_PROPERTY_TIMESTAMP, ServerValue.TIMESTAMP);
-
-            /* Build the shopping list */
-            //ShoppingList newShoppingList = new ShoppingList(userEnteredName, mEncodedEmail,
-            //        timestampCreated);
-
-            //HashMap<String, Object> shoppingListMap = (HashMap<String, Object>)
-            //        new ObjectMapper().convertValue(newShoppingList, Map.class);
-
-            //Utils.updateMapForAllWithValue(null, listId, mEncodedEmail,
-             //       updateShoppingListData, "", shoppingListMap);
-
-            //updateShoppingListData.put("/" + Constants.FIREBASE_LOCATION_OWNER_MAPPINGS + "/" + listId,
-            //        mEncodedEmail);
-
-            /* Do the update */
-            firebaseRef.updateChildren(updateShoppingListData, new Firebase.CompletionListener() {
-                @Override
-                public void onComplete(FirebaseError firebaseError, Firebase firebase) {
-                    /* Now that we have the timestamp, update the reversed timestamp */
-                    Utils.updateTimestampReversed(firebaseError, "AddList", listId,
-                            null, mEncodedEmail);
-                }
-            });
-
-            /* Close the dialog fragment */
             AddAlarmDialogFragment.this.getDialog().cancel();
         }
     }
