@@ -43,10 +43,24 @@
     <string name="error_cannot_be_empty">This cannot be empty.</string>
 
 
+    <!-- STRINGS RELACIONADOS A ALARMAS -->
+    <string name="deleteAlarmConfirmationMessage">¿Confirma que desea borrar la alarma seleccionada?</string>
+    <string name="deleteAlarmConfirmationTitle">Borrar Alarma</string>
+    <string name="inactivateAlarmConfirmationMessage">¿Confirma que desea inactivar la alarma seleccionada?</string>
+    <string name="inactivateAlarmConfirmationTitle">Inactivar Alarma</string>
+    <string name="addAlarmDialogTitle">Nueva Alarma</string>
     <string name="viewFragmentTitle">Detalle Alarma Fragment</string>
+
+    <!-- STRINGS GENERICOS PARA DIALOGS -->
+    <string name="okButton">Aceptar</string>
+    <string name="cancelButton">Cancelar</string>
+
+    <!-- STRINGS PARA MENUES -->
+    <string name="editAlarmMenu">Editar</string>
+    <string name="deleteAlarmMenu">Borrar</string>
+    <string name="inactivateAlarmMenu">Inactivar</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="ADD_ALARM_DIALOG_TITLE">Nueva Alarma</string>
     <string name="title_activity_main2">Main2Activity</string>
 </resources>

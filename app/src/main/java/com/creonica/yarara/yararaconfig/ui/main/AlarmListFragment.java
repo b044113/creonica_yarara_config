@@ -1,13 +1,20 @@
 package com.creonica.yarara.yararaconfig.ui.main;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
+import android.support.v7.app.AlertDialog;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.creonica.yarara.yararaconfig.R;
 import com.creonica.yarara.yararaconfig.model.Alarm;
 import com.creonica.yarara.yararaconfig.model.Sensor;
 import com.creonica.yarara.yararaconfig.model.User;
@@ -63,16 +70,16 @@ public class AlarmListFragment extends ListFragment {
         launchAlarmDetailActivity(MainActivity.FragmentToLaunch.VIEW, position);
     }
 
- /*   @Override
+    @Override
     public void onCreateContextMenu(ContextMenu contextMenu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(contextMenu, v, menuInfo);
 
         MenuInflater menuInflater = getActivity().getMenuInflater();
-        menuInflater.inflate(R.menu.long_press_menu, contextMenu);
+        menuInflater.inflate(R.menu.long_press_alarm_menu, contextMenu);
     }
-*/
 
- /*   @Override
+
+    @Override
     public boolean onContextItemSelected(MenuItem item ) {
 
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
@@ -81,26 +88,23 @@ public class AlarmListFragment extends ListFragment {
 
         switch (item.getItemId()){
             case R.id.edit:
-                //do something
                 launchAlarmDetailActivity(MainActivity.FragmentToLaunch.EDIT,  rowPosition);
                 return true;
+
             case R.id.delete:
-                //do something
-                //NotebookDbAdapter dbAdapter = new NotebookDbAdapter(getActivity().getBaseContext());
-                //dbAdapter.open();
-                //dbAdapter.deleteNote(note.getNoteId());
+                showDeleteAlarmDialog(rowPosition);
 
-                alarms.clear();
-                alarms.addAll(getAllAlarms()); //  (dbAdapter.getAllNotes());
-                mAlarmListAdapter.notifyDataSetChanged();
+                return true;
 
-                //dbAdapter.close();
+            case R.id.inactivate:
+                showInactivateAlarmDialog(alarm.getID());
+
                 return true;
         }
 
         return super.onContextItemSelected(item);
     }
-*/
+
     private void launchAlarmDetailActivity(MainActivity.FragmentToLaunch ftl,  int position) {
         Alarm alarm = (Alarm) getListAdapter().getItem(position);
 
@@ -115,11 +119,65 @@ public class AlarmListFragment extends ListFragment {
                 intent.putExtra(MainActivity.ALARM_FRAGMENT_TO_LOAD_EXTRA, MainActivity.FragmentToLaunch.VIEW);
                 break;
             case EDIT:
-                intent.putExtra(MainActivity.ALARM_FRAGMENT_TO_LOAD_EXTRA, MainActivity.FragmentToLaunch.EDIT);
+                intent.putExtra(MainActivity.ALARM_FRAGMENT_TO_LOAD_EXTRA, MainActivity.FragmentToLaunch.VIEW);
                 break;
         }
         startActivity(intent);
     }
 
+    public void showDeleteAlarmDialog(final int rowPosition) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        builder.setMessage(R.string.deleteAlarmConfirmationMessage)
+                .setTitle(R.string.deleteAlarmConfirmationTitle);
+
+        // Add the buttons
+        builder.setPositiveButton(R.string.okButton, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked OK button
+
+                //NotebookDbAdapter dbAdapter = new NotebookDbAdapter(getActivity().getBaseContext());
+                //dbAdapter.open();
+                //dbAdapter.deleteNote(note.getNoteId());
+
+                AlarmFactory.getAlarmFactory(getContext()).getAlarms().remove(rowPosition);
+                mAlarmListAdapter.notifyDataSetChanged();
+
+                //dbAdapter.close();
+            }
+        });
+        builder.setNegativeButton(R.string.cancelButton, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog - DO NOTHING
+            }
+        });
+
+        // Create the AlertDialog
+        AlertDialog dialog = builder.show();
+    }
+
+    public void showInactivateAlarmDialog(final Integer alarmID) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        builder.setMessage(R.string.inactivateAlarmConfirmationMessage)
+                .setTitle(R.string.inactivateAlarmConfirmationTitle);
+
+        // Add the buttons
+        builder.setPositiveButton(R.string.okButton, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked OK button
+                AlarmFactory.getAlarmFactory(getContext()).getAlarm(alarmID).inactivate();
+                mAlarmListAdapter.notifyDataSetChanged();
+            }
+        });
+        builder.setNegativeButton(R.string.cancelButton, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog - DO NOTHING
+            }
+        });
+
+        // Create the AlertDialog
+        AlertDialog dialog = builder.show();
+    }
 
 }

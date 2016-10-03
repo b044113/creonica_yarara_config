@@ -7,7 +7,7 @@
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/dark_blue_700</item>
         <item name="android:colorBackground">@color/primary</item>
-        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
         <item name="android:textColorSecondary">#fcfcfc</item>
     </style>
 
@@ -23,8 +23,14 @@
         <item name="colorAccent">@color/light_blue_300</item>
     </style>
 
-
+    <!-- LIST ITEM STYLES -->
     <style name="ListItemText">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/list_item_text_size_large</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="MenuItemText">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">@dimen/list_item_text_size_large</item>
         <item name="android:layout_margin">2dp</item>

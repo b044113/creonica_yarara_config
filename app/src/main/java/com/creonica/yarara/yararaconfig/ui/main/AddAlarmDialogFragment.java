@@ -62,7 +62,7 @@ public class AddAlarmDialogFragment extends DialogFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        getDialog().setTitle(R.string.ADD_ALARM_DIALOG_TITLE);
+        getDialog().setTitle(R.string.addAlarmDialogTitle);
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_add_alarm_dialog, container, false);
 
@@ -97,7 +97,7 @@ public class AddAlarmDialogFragment extends DialogFragment{
         /* Inflate and set the layout for the dialog */
         /* Se definen las acciones de los botones de guardar y cancelar */
         builder.setView(rootView)
-                .setTitle(R.string.ADD_ALARM_DIALOG_TITLE)
+                .setTitle(R.string.addAlarmDialogTitle)
                 /* Add action buttons */
                 .setPositiveButton("Agregar", new DialogInterface.OnClickListener() {
                     @Override
