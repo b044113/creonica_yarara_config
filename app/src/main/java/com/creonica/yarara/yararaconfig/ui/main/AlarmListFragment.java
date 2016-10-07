@@ -16,8 +16,6 @@ import android.widget.ListView;
 
 import com.creonica.yarara.yararaconfig.R;
 import com.creonica.yarara.yararaconfig.model.Alarm;
-import com.creonica.yarara.yararaconfig.model.Sensor;
-import com.creonica.yarara.yararaconfig.model.User;
 import com.creonica.yarara.yararaconfig.utils.AlarmFactory;
 
 import java.util.ArrayList;
@@ -75,7 +73,7 @@ public class AlarmListFragment extends ListFragment {
         super.onCreateContextMenu(contextMenu, v, menuInfo);
 
         MenuInflater menuInflater = getActivity().getMenuInflater();
-        menuInflater.inflate(R.menu.long_press_alarm_menu, contextMenu);
+        menuInflater.inflate(R.menu.menu_long_press_main, contextMenu);
     }
 
 

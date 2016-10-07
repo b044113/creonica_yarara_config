@@ -51,6 +51,15 @@
     <string name="addAlarmDialogTitle">Nueva Alarma</string>
     <string name="viewFragmentTitle">Detalle Alarma Fragment</string>
 
+    <!-- STRINGS RELACIONADOS A SENSORES -->
+    <string name="deleteSensorConfirmationMessage">¿Confirma que desea borrar el sensor seleccionado?</string>
+    <string name="deleteSensorConfirmationTitle">Borrar Sensor</string>
+    <string name="inactivateSensorConfirmationMessage">¿Confirma que desea inactivar el sensor seleccionado?</string>
+    <string name="inactivateSensorConfirmationTitle">Inactivar Sensor</string>
+    <string name="activateSensorConfirmationTitle">Activar Sensor</string>
+    <string name="addSensorDialogTitle">Nuevo Sensor</string>
+
+
     <!-- STRINGS GENERICOS PARA DIALOGS -->
     <string name="okButton">Aceptar</string>
     <string name="cancelButton">Cancelar</string>
