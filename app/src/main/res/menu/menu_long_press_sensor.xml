@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/MenuItemText">
+
+    <item
+        android:id="@+id/edit"
+        android:title="@string/editAlarmMenu"
+        />
+    <item
+        android:id="@+id/inactivate"
+        android:title="@string/inactivateAlarmMenu"
+        />
+    <item
+        android:id="@+id/delete"
+        android:title="@string/deleteAlarmMenu"
+        />
+
+</menu>

@@ -3,6 +3,7 @@ package com.creonica.yarara.yararaconfig.ui.main;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 
 import com.creonica.yarara.yararaconfig.R;
 import com.creonica.yarara.yararaconfig.model.Alarm;
+import com.creonica.yarara.yararaconfig.model.Sensor;
 import com.creonica.yarara.yararaconfig.utils.AlarmFactory;
 
 /**
@@ -22,9 +24,6 @@ import com.creonica.yarara.yararaconfig.utils.AlarmFactory;
  */
 public class AddSensorDialogFragment extends DialogFragment {
 
-    //String mEncodedEmail;
-    //EditText mEditTextListName;
-    EditText mEditTextSensorId;
     EditText mEditTextSensorDesc;
 
     public AddSensorDialogFragment() {
@@ -75,40 +74,25 @@ public class AddSensorDialogFragment extends DialogFragment {
 
         // Obtener el inflater de layout y pasarle la referencia al layout del fragmento
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View rootView = inflater.inflate(R.layout.fragment_add_alarm_dialog, null);
+        View rootView = inflater.inflate(R.layout.fragment_add_sensor_dialog, null);
 
-        mEditTextAlarmId = (EditText) rootView.findViewById(R.id.alarmID_editText);
-        mEditTextAlarmDesc = (EditText) rootView.findViewById(R.id.alarmDesc_editText);
-        mEditTextAlarmPhone = (EditText) rootView.findViewById(R.id.alarmPhone_editText);
+        mEditTextSensorDesc = (EditText) rootView.findViewById(R.id.sensorDesc_editText);
 
-        /**
-         * Call addShoppingList() when user taps "Done" keyboard action
-         */
-        /*mEditTextListName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
-                if (actionId == EditorInfo.IME_ACTION_DONE || keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
-                    addShoppingList();
-                }
-                return true;
-            }
-        });
-*/
         /* Inflate and set the layout for the dialog */
         /* Se definen las acciones de los botones de guardar y cancelar */
         builder.setView(rootView)
-                .setTitle(R.string.addAlarmDialogTitle)
+                .setTitle(R.string.addSensorDialogTitle)
                 /* Add action buttons */
                 .setPositiveButton("Agregar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        addAlarm();
+                        addSensor();
                     }
                 })
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        AddAlarmDialogFragment.this.getDialog().cancel();
+                        AddSensorDialogFragment.this.getDialog().cancel();
                     }
                 });
 
@@ -118,21 +102,22 @@ public class AddSensorDialogFragment extends DialogFragment {
     /**
      * Add new active list
      */
-    public void addAlarm() {
-        String alarmId = mEditTextAlarmId.getText().toString();
-        String alarmDesc = mEditTextAlarmDesc.getText().toString();
-        String alarmPhone = mEditTextAlarmPhone.getText().toString();
+    public void addSensor() {
+        String sensorDesc = mEditTextSensorDesc.getText().toString();
 
-        /**
-         * If EditText input is not empty
-         *
-         */
-        if (!alarmId.equals("") && !alarmPhone.equals("")) {
-            //Esto hay que cambiarlo una vez que se implemente la BD
-            AlarmFactory.getAlarmFactory(getContext())
-                    .getAlarms().add(new Alarm(Integer.parseInt(alarmId) , alarmDesc, alarmPhone));
+        Intent intent = getActivity().getIntent();
+        String alarmID = intent.getExtras().getString(MainActivity.ALARM_ID_EXTRA);
+        Alarm alarm = AlarmFactory.getAlarmFactory(getContext()).getAlarm(Integer.parseInt(alarmID));
 
-            AddAlarmDialogFragment.this.getDialog().cancel();
-        }
+        //Crea el nuevo ID para el sensor a partir del tamaño de sensores
+        String newSensorID = alarmID + String.valueOf(alarm.getSensors().size() + 1);
+
+        AlarmFactory.getAlarmFactory(getContext()).getAlarm(Integer.parseInt(alarmID))
+                .getSensors().put(newSensorID,
+                                    new Sensor(Integer.parseInt(newSensorID),
+                                                sensorDesc,
+                                                Sensor.SensorStatus.ENABLED));
+
+        AddSensorDialogFragment.this.getDialog().cancel();
     }
 }
